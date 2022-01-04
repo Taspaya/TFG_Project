@@ -30,7 +30,7 @@ Material:
     - _Occlusion: 0
     - _SquashAmount: 1
     m_Colors:
-    - _Color: {r: 0.20763202, g: 0.735849, b: 0.12842648, a: 1}
+    - _Color: {r: 0.4245283, g: 0.2265773, b: 0.062077247, a: 1}
     - _Scale: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _TreeInstanceScale: {r: 1, g: 1, b: 1, a: 1}

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{4CE07701-134F-9DD0-F36C-F385BB4D61DF}</ProjectGuid>
+    <ProjectGuid>{EB3C5573-C529-AF3B-7107-85444510E19A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -56,12 +56,13 @@
     <Compile Include="Assets\Scripts\Cs_CombatUnit.cs" />
     <Compile Include="Assets\Scripts\PersistentSingleton.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Cs_BaseEnemy.cs" />
     <Compile Include="Assets\Prefabs\SO_Footstep.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\L_FG_Assets_Pack_Lite\Demo\cameraMove.cs" />
     <Compile Include="Assets\Scripts\Cs_DestroyAfterCreated.cs" />
     <Compile Include="Assets\Scripts\Cs_footStep.cs" />
-    <Compile Include="Assets\AnimationEventHandler.cs" />
+    <Compile Include="Assets\Scripts\AnimationEventHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\L_FG_Assets_Pack_Lite\Demo\Read me01.txt" />

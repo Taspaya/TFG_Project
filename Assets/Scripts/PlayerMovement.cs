@@ -75,9 +75,12 @@ public class PlayerMovement : MonoBehaviour
     }
     void ManagePlayerMovement()
     {
+
         horizontal = Input.GetAxis("Horizontal");
         Vector3 position = transform.position;
         position.x = position.x + 0.1f * horizontal * Time.deltaTime * speed * 10;
+        
+        if((!PlayerController.Instance.GetIsLeftLimited() && horizontal < 0) || (!PlayerController.Instance.GetIsRightLimited() && horizontal > 0))
         transform.position = position;
     }
 
@@ -96,7 +99,6 @@ public class PlayerMovement : MonoBehaviour
 
         if(jumpTimeCounter > 0 && Input.GetButton("Jump"))
         {
-            Debug.Log(jumpTimeCounter);
             jumpTimeCounter -= Time.deltaTime;
             myRb.AddForce(Vector3.up * initialJumpVelocity * jumpForce * 0.005f);
         }
