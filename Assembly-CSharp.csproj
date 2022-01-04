@@ -63,9 +63,27 @@
     <Compile Include="Assets\Scripts\Cs_DestroyAfterCreated.cs" />
     <Compile Include="Assets\Scripts\Cs_footStep.cs" />
     <Compile Include="Assets\Scripts\AnimationEventHandler.cs" />
+    <Compile Include="Assets\Scripts\InteractableBase.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Polytope Studio\Lowpoly Medieval Characters\Sources\Scripts\PT_Create_Prefab.cs" />
+    <Compile Include="Assets\Scripts\SimpleDialogue.cs" />
+    <Compile Include="Assets\Scripts\UI_Manager.cs" />
+    <Compile Include="Assets\Scripts\CS_Pickup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Polytope Studio\Lowpoly Medieval Environments\Sources\Shaders\PT_Vegetation_Plants_Shader.shader" />
+    <None Include="Assets\Polytope Studio\Lowpoly Medieval Weapons\Sources\Shaders\PT_Medieval_Weapons_Shader_Toon.shader" />
+    <None Include="Assets\Fonts\potato_lite\More Info.txt" />
+    <None Include="Assets\Polytope Studio\Lowpoly Medieval Weapons\Sources\Shaders\PT_Medieval_Weapons_Shader_PBR.shader" />
+    <None Include="Assets\Polytope Studio\Lowpoly Medieval Characters\Sources\Modular_Armors\Shaders\PT_Medieval_Armors_Shader_PBR.shader" />
+    <None Include="Assets\Polytope Studio\Lowpoly Medieval Environments\Sources\Shaders\PT_Vegetation_Opaque_Shader.shader" />
+    <None Include="Assets\Polytope Studio\Lowpoly Medieval Environments\Sources\Shaders\PT_Vegetation_Foliage_Shader.shader" />
     <None Include="Assets\L_FG_Assets_Pack_Lite\Demo\Read me01.txt" />
+    <None Include="Assets\Polytope Studio\Lowpoly Medieval Environments\Sources\Shaders\PT_Vegetation_Flowers_Shader.shader" />
+    <None Include="Assets\Hovl Studio\Procedural fire\Shaders\FireSphere.shader" />
+    <None Include="Assets\Polytope Studio\Lowpoly Medieval Characters\Sources\Modular_Armors\Shaders\PT_Medieval_Armors_Shader_Toon.shader" />
+    <None Include="Assets\Polytope Studio\Lowpoly Medieval Environments\Sources\Shaders\PT_Rock_Shader.shader" />
+    <None Include="Assets\Hovl Studio\Procedural fire\Demo scene\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

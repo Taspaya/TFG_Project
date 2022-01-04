@@ -62,10 +62,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ManagePlayerMovement();
         FlipPlayer();
-        ManageAnimations();
         ManageJump();
+        ManagePlayerMovement();
+        ManageAnimations();
     }
 
     private void FixedUpdate()
@@ -75,13 +75,15 @@ public class PlayerMovement : MonoBehaviour
     }
     void ManagePlayerMovement()
     {
+        if (PlayerController.Instance.GetCanWalk())
+            horizontal = Input.GetAxis("Horizontal");
+        else horizontal = 0;
 
-        horizontal = Input.GetAxis("Horizontal");
         Vector3 position = transform.position;
         position.x = position.x + 0.1f * horizontal * Time.deltaTime * speed * 10;
         
-        if((!PlayerController.Instance.GetIsLeftLimited() && horizontal < 0) || (!PlayerController.Instance.GetIsRightLimited() && horizontal > 0))
-        transform.position = position;
+        if(((!PlayerController.Instance.GetIsLeftLimited() && horizontal < 0) || (!PlayerController.Instance.GetIsRightLimited() && horizontal > 0)) && PlayerController.Instance.GetCanWalk())
+        transform.position = position; 
     }
 
     void ManageJump()
@@ -108,13 +110,16 @@ public class PlayerMovement : MonoBehaviour
 
     void FlipPlayer()
     {
-        if (horizontal > 0 && transform.rotation.y != 90) playerMesh.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
-        else if (horizontal < 0 && transform.rotation.y != -90) playerMesh.transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+        if (PlayerController.Instance.GetCanWalk())
+        {
+            if (horizontal > 0 && transform.rotation.y != 90) playerMesh.transform.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
+            else if (horizontal < 0 && transform.rotation.y != -90) playerMesh.transform.rotation = Quaternion.Euler(new Vector3(0, -90, 0));
+        }
     }
 
     void ManageAnimations()
     {
-        myAnimator.SetBool("isRunning", (horizontal < -0.5f || horizontal > 0.5f || horizontal != 0));
+        myAnimator.SetBool("isRunning", ((horizontal < -0.5f || horizontal > 0.5f || horizontal != 0)));
         myAnimator.SetBool("isGrounded", isGrounded);
     }
 

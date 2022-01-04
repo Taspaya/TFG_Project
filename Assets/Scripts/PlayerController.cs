@@ -18,6 +18,8 @@ public class PlayerController : Cs_CombatUnit
     bool isLeftLimited = false;
     bool isRightLimited = false;
 
+    bool canWalk = true;
+
     [SerializeField]
     [Tooltip("Mask for the ground and walls")]
     LayerMask wallMask;
@@ -72,8 +74,7 @@ public class PlayerController : Cs_CombatUnit
 
     private void Update()
     {
-        ManageAnimations();
-        //if (Input.GetButtonDown("Attack")) Attack();
+        if (GameManager.Instance.GetCurrentGameState() == GameManager.GameState.Playing) ManageAnimations();
     } 
     
     public override void Attack()
@@ -109,4 +110,6 @@ public class PlayerController : Cs_CombatUnit
 
     public bool GetIsLeftLimited() { return isLeftLimited; }
     public bool GetIsRightLimited() { return isRightLimited; }
+    public bool GetCanWalk() { return canWalk; }
+    public void SetCanWalk(bool value) { canWalk = value;  }
 }
