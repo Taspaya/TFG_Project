@@ -7,7 +7,8 @@ public class UI_Manager : MonoBehaviour
 {
     [SerializeField]
     GameObject dialogueCanvas;
-
+    [SerializeField]
+    GameObject objectiveCanvas;
     [SerializeField]
     Text currentDialogueText;
 

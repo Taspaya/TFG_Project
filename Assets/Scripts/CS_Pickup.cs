@@ -4,10 +4,16 @@ using UnityEngine;
 
 public class CS_Pickup : InteractableBase
 {
-    // Start is called before the first frame update
     public override void ExecuteAction()
     {
         base.ExecuteAction();
-        Destroy(gameObject); 
+        Instantiate(PlayerController.Instance.particles[1],transform).Play();
+        StartCoroutine(Destroy());
+    }
+
+    IEnumerator Destroy()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
     }
 }

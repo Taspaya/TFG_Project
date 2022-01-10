@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class PlayerController : Cs_CombatUnit
@@ -30,6 +31,13 @@ public class PlayerController : Cs_CombatUnit
     [SerializeField]
     [Tooltip("Position of the right limit")]
     Transform rightLimitPos;
+    [SerializeField]
+    LayerMask destructibleMask;
+
+    [Header(" ======= Particles =========")]
+
+    [SerializeField]
+    public ParticleSystem[] particles;
 
     protected static PlayerController _instance;
 
@@ -79,6 +87,13 @@ public class PlayerController : Cs_CombatUnit
     
     public override void Attack()
     {
+        CheckForEnemies();
+        CheckForDestructibles();
+
+    }
+
+    void CheckForEnemies()
+    {
         Collider[] enemiesArray = Physics.OverlapSphere(handPos.position, hitCheckRadius, EnemyMask);
 
         if (enemiesArray.Length > 0)
@@ -88,6 +103,19 @@ public class PlayerController : Cs_CombatUnit
                 if (enemy) DealDamage(enemy);
             }
     }
+    
+    void CheckForDestructibles() {
+
+        Collider[] destructiblesArray = Physics.OverlapSphere(handPos.position, hitCheckRadius, destructibleMask);
+
+        if (destructiblesArray.Length > 0)
+            foreach (var item in destructiblesArray)
+            {
+                Cs_Destructible destructible = item.GetComponent<Cs_Destructible>();
+                if (destructible) destructible.Hit();
+            }
+    }
+    
     void ManageAnimations()
     {
         if (Input.GetButtonDown("Attack")) GetComponentInChildren<Animator>().SetTrigger("Attack");
