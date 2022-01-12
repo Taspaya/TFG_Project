@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 3062494984983845903}
   - component: {fileID: 4414019491671965813}
   - component: {fileID: 1034923956545229461}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_platform_ruins_modular
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &4236486652576360288
 Transform:
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3567086779059092954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.1197114, y: 1.9051874, z: 1.9051874}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

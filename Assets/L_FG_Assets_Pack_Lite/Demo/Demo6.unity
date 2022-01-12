@@ -471,7 +471,7 @@ Transform:
   - {fileID: 202230307}
   - {fileID: 1968598451}
   m_Father: {fileID: 636589998}
-  m_RootOrder: 226
+  m_RootOrder: 199
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &7969465 stripped
 Transform:
@@ -1505,7 +1505,7 @@ Transform:
   - {fileID: 751792832}
   - {fileID: 1300228795}
   m_Father: {fileID: 636589998}
-  m_RootOrder: 269
+  m_RootOrder: 245
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &61186230 stripped
 Transform:
@@ -3759,7 +3759,7 @@ Transform:
   m_Children:
   - {fileID: 724683939}
   m_Father: {fileID: 636589998}
-  m_RootOrder: 312
+  m_RootOrder: 291
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &184855378
 PrefabInstance:
@@ -4798,6 +4798,22 @@ PrefabInstance:
     - target: {fileID: 400000, guid: f442048109d05d3469567616bb2f68bc, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: f442048109d05d3469567616bb2f68bc, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: f442048109d05d3469567616bb2f68bc, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: f442048109d05d3469567616bb2f68bc, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: f442048109d05d3469567616bb2f68bc, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f442048109d05d3469567616bb2f68bc, type: 3}
@@ -9489,7 +9505,7 @@ Transform:
   - {fileID: 121205004}
   - {fileID: 1205680935}
   m_Father: {fileID: 636589998}
-  m_RootOrder: 355
+  m_RootOrder: 337
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &527683157 stripped
 Transform:
@@ -9759,7 +9775,7 @@ Transform:
   - {fileID: 1700310743}
   - {fileID: 1905844650}
   m_Father: {fileID: 636589998}
-  m_RootOrder: 398
+  m_RootOrder: 383
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &544423715
 GameObject:
@@ -12013,6 +12029,7 @@ Transform:
   - {fileID: 534220647}
   - {fileID: 336141164}
   - {fileID: 1215677147}
+  - {fileID: 7728043}
   - {fileID: 92775695}
   - {fileID: 730133857}
   - {fileID: 993580849}
@@ -12040,7 +12057,6 @@ Transform:
   - {fileID: 1761800994}
   - {fileID: 1960348651}
   - {fileID: 27047518}
-  - {fileID: 7728043}
   - {fileID: 1705972004}
   - {fileID: 2009731017}
   - {fileID: 2057833874}
@@ -12059,6 +12075,7 @@ Transform:
   - {fileID: 2069941197}
   - {fileID: 1328719716}
   - {fileID: 1347155868}
+  - {fileID: 57471363}
   - {fileID: 1540715725}
   - {fileID: 1607057338}
   - {fileID: 1709076217}
@@ -12083,7 +12100,6 @@ Transform:
   - {fileID: 889921354}
   - {fileID: 809468998}
   - {fileID: 2494288}
-  - {fileID: 57471363}
   - {fileID: 1340731242}
   - {fileID: 1255971575}
   - {fileID: 360562171}
@@ -12105,6 +12121,7 @@ Transform:
   - {fileID: 1047607687}
   - {fileID: 68299754}
   - {fileID: 1671204498}
+  - {fileID: 182714598}
   - {fileID: 1045195872}
   - {fileID: 941319682}
   - {fileID: 1440291084}
@@ -12126,7 +12143,6 @@ Transform:
   - {fileID: 2141483966}
   - {fileID: 608503089}
   - {fileID: 660332264}
-  - {fileID: 182714598}
   - {fileID: 1000732636}
   - {fileID: 166776858}
   - {fileID: 904608033}
@@ -12151,6 +12167,7 @@ Transform:
   - {fileID: 796840535}
   - {fileID: 305096351}
   - {fileID: 333750601}
+  - {fileID: 525290368}
   - {fileID: 551641922}
   - {fileID: 245448458}
   - {fileID: 1507091689}
@@ -12169,7 +12186,6 @@ Transform:
   - {fileID: 860504097}
   - {fileID: 1947336222}
   - {fileID: 1984135435}
-  - {fileID: 525290368}
   - {fileID: 1726115331}
   - {fileID: 548936460}
   - {fileID: 1951674531}
@@ -12197,6 +12213,7 @@ Transform:
   - {fileID: 1537324761}
   - {fileID: 1180673942}
   - {fileID: 193702144}
+  - {fileID: 538183002}
   - {fileID: 2138768652}
   - {fileID: 534204837}
   - {fileID: 1772217887}
@@ -12212,7 +12229,6 @@ Transform:
   - {fileID: 407920292}
   - {fileID: 1576693857}
   - {fileID: 303486115}
-  - {fileID: 538183002}
   - {fileID: 1295372352}
   - {fileID: 1557213349}
   - {fileID: 83417631}
@@ -12243,6 +12259,7 @@ Transform:
   - {fileID: 634439893}
   - {fileID: 1866901286}
   - {fileID: 2005494973}
+  - {fileID: 1002946165}
   - {fileID: 1287090514}
   - {fileID: 1286566512}
   - {fileID: 1922136826}
@@ -12255,7 +12272,6 @@ Transform:
   - {fileID: 570616154}
   - {fileID: 242991344}
   - {fileID: 247396197}
-  - {fileID: 1002946165}
   - {fileID: 1067029970}
   - {fileID: 904239340}
   - {fileID: 2140288313}
@@ -12289,6 +12305,7 @@ Transform:
   - {fileID: 723749416}
   - {fileID: 1525496326}
   - {fileID: 1810593637}
+  - {fileID: 1410279288}
   - {fileID: 784952617}
   - {fileID: 1289340891}
   - {fileID: 1046048476}
@@ -12298,7 +12315,6 @@ Transform:
   - {fileID: 1130151661}
   - {fileID: 189841188}
   - {fileID: 1376818261}
-  - {fileID: 1410279288}
   - {fileID: 2130140635}
   - {fileID: 1295224597}
   - {fileID: 1818885078}
@@ -12335,13 +12351,13 @@ Transform:
   - {fileID: 1895908953}
   - {fileID: 871306116}
   - {fileID: 1286528841}
+  - {fileID: 1678463287}
   - {fileID: 1483925833}
   - {fileID: 236499857}
   - {fileID: 214676914}
   - {fileID: 345475627}
   - {fileID: 684859473}
   - {fileID: 188515023}
-  - {fileID: 1678463287}
   - {fileID: 632239327}
   - {fileID: 1835907987}
   - {fileID: 92126133}
@@ -12381,10 +12397,10 @@ Transform:
   - {fileID: 1376266811}
   - {fileID: 607379628}
   - {fileID: 862541537}
+  - {fileID: 2060827410}
   - {fileID: 1629185406}
   - {fileID: 1224907909}
   - {fileID: 1737200465}
-  - {fileID: 2060827410}
   - {fileID: 1066687820}
   - {fileID: 2021470984}
   - {fileID: 2090434488}
@@ -24492,7 +24508,7 @@ Transform:
   m_Children:
   - {fileID: 180483276}
   m_Father: {fileID: 636589998}
-  m_RootOrder: 441
+  m_RootOrder: 429
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1004032163
 PrefabInstance:
@@ -33073,7 +33089,7 @@ Transform:
   m_Children:
   - {fileID: 1492299236}
   m_Father: {fileID: 636589998}
-  m_RootOrder: 484
+  m_RootOrder: 475
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1410440292
 PrefabInstance:
@@ -35777,7 +35793,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
       propertyPath: InitialModule.startSize.minScalar
-      value: 2.5000
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
       propertyPath: InitialModule.startSize.maxCurve.m_Curve.Array.data[0].value
@@ -35785,7 +35817,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
       propertyPath: InitialModule.startSize.minCurve.m_Curve.Array.data[0].value
-      value: .3125
+      value: 0.3125
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d834642adc9326645adaa13be7ffc6ab, type: 3}
@@ -38825,7 +38857,7 @@ Transform:
   m_Children:
   - {fileID: 1336554310}
   m_Father: {fileID: 636589998}
-  m_RootOrder: 527
+  m_RootOrder: 521
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1680596136 stripped
 Transform:
@@ -45445,21 +45477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 646b5bc27a658f447b1d929fd5ffbd70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 1
-  showGeneratedNormals: 0
-  offsetScale: 0.2
-  blurRadius: 18
-  edgeThresholdMin: 0.05
-  edgeThreshold: 0.2
-  edgeSharpness: 4
-  dlaaSharp: 0
-  ssaaShader: {fileID: 4800000, guid: b3728d1488b02490cbd196c7941bf1f8, type: 3}
-  dlaaShader: {fileID: 4800000, guid: 017ca72b9e8a749058d13ebd527e98fa, type: 3}
-  nfaaShader: {fileID: 4800000, guid: ce0cb2621f6d84e21a87414e471a3cce, type: 3}
-  shaderFXAAPreset2: {fileID: 4800000, guid: 6f1418cffd12146f2a83be795f6fa5a7, type: 3}
-  shaderFXAAPreset3: {fileID: 4800000, guid: c182fa94a5a0a4c02870641efcd38cd5, type: 3}
-  shaderFXAAII: {fileID: 4800000, guid: cd5b323dcc592457790ff18b528f5e67, type: 3}
-  shaderFXAAIII: {fileID: 4800000, guid: c547503fff0e8482ea5793727057041c, type: 3}
 --- !u!81 &1984239437
 AudioListener:
   m_ObjectHideFlags: 0
@@ -45501,7 +45518,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -45545,24 +45562,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd70d448b18cfbc46af26466f752332c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visualizeFocus: 0
-  focalLength: 1
-  focalSize: 0.1
-  aperture: 2.2
-  focalTransform: {fileID: 0}
-  maxBlurSize: 2
-  highResolution: 0
-  blurType: 0
-  blurSampleCount: 2
-  nearBlur: 0
-  foregroundOverlap: 1
-  dofHdrShader: {fileID: 4800000, guid: acd613035ff3e455e8abf23fdc8c8c24, type: 3}
-  dx11BokehShader: {fileID: 4800000, guid: d8e82664aa8686642a424c88ab10164a, type: 3}
-  dx11BokehThreshold: 0.5
-  dx11SpawnHeuristic: 0.0875
-  dx11BokehTexture: {fileID: 2800000, guid: a4cdca73d61814d33ac1587f6c163bca, type: 3}
-  dx11BokehScale: 1.2
-  dx11BokehIntensity: 2.5
 --- !u!114 &1984239444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45575,51 +45574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fceaeb339b971b429c4cc600acabd13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tweakMode: 0
-  screenBlendMode: 1
-  hdr: 0
-  sepBlurSpread: 2.5
-  quality: 1
-  bloomIntensity: 1
-  bloomThreshold: 0.25
-  bloomThresholdColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
-  bloomBlurIterations: 2
-  hollywoodFlareBlurIterations: 2
-  flareRotation: 0
-  lensflareMode: 1
-  hollyStretchWidth: 2.5
-  lensflareIntensity: 0
-  lensflareThreshold: 0.3
-  lensFlareSaturation: 0.75
-  flareColorA:
-    r: 0.4
-    g: 0.4
-    b: 0.8
-    a: 0.75
-  flareColorB:
-    r: 0.4
-    g: 0.8
-    b: 0.8
-    a: 0.75
-  flareColorC:
-    r: 0.8
-    g: 0.4
-    b: 0.8
-    a: 0.75
-  flareColorD:
-    r: 0.8
-    g: 0.4
-    b: 0
-    a: 0.75
-  lensFlareVignetteMask: {fileID: 2800000, guid: 95ef4804fe0be4c999ddaa383536cde8, type: 3}
-  lensFlareShader: {fileID: 4800000, guid: 459fe69d2f6d74ddb92f04dbf45a866b, type: 3}
-  screenBlendShader: {fileID: 4800000, guid: 7856cbff0a0ca45c787d5431eb805bb0, type: 3}
-  blurAndFlaresShader: {fileID: 4800000, guid: be6e39cf196f146d5be72fbefb18ed75, type: 3}
-  brightPassFilterShader: {fileID: 4800000, guid: 0aeaa4cb29f5d4e9c8455f04c8575c8c, type: 3}
 --- !u!114 &1984239445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45632,15 +45586,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0923359e9e352a4b9b11c7b7161ad67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Radius: 0.5
-  m_SampleCount: 1
-  m_OcclusionIntensity: 1
-  m_Blur: 2
-  m_Downsampling: 2
-  m_OcclusionAttenuation: 1
-  m_MinZ: 0.01
-  m_SSAOShader: {fileID: 4800000, guid: 43ca18288c424f645aaa1e9e07f04c50, type: 3}
-  m_RandomTexture: {fileID: 2800000, guid: a181ca8e3c62f3e4b8f183f6c586b032, type: 3}
 --- !u!114 &1984239446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45653,17 +45598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6d4281e5d7cd44d8c6e38bc2c1b8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
-  intensity: 0.375
-  chromaticAberration: 0.2
-  axialAberration: 0.5
-  blur: 0
-  blurSpread: 0.75
-  luminanceDependency: 0.25
-  blurDistance: 2.5
-  vignetteShader: {fileID: 4800000, guid: 627943dc7a9a74286b70a4f694a0acd5, type: 3}
-  separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
-  chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee, type: 3}
 --- !u!1001 &1985593172
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47967,7 +47901,7 @@ Transform:
   m_Children:
   - {fileID: 732666552}
   m_Father: {fileID: 636589998}
-  m_RootOrder: 570
+  m_RootOrder: 567
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2060827411
 MeshRenderer:

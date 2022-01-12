@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 4067114302522587701}
   - component: {fileID: 3436492020517332671}
   - component: {fileID: -2414504675233240778}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SM_square_pillar_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 1
   m_IsActive: 1
 --- !u!4 &2898741685617623386
 Transform:

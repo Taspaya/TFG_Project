@@ -70,6 +70,8 @@
     <Compile Include="Assets\Scripts\Cs_footStep.cs" />
     <Compile Include="Assets\Scripts\SimpleDialogue.cs" />
     <Compile Include="Assets\Scripts\AnimationEventHandler.cs" />
+    <Compile Include="Assets\CS_Fog.cs" />
+    <Compile Include="Assets\CS_KillingObstacle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Polytope Studio\Lowpoly Medieval Environments\Sources\Shaders\PT_Vegetation_Plants_Shader.shader" />

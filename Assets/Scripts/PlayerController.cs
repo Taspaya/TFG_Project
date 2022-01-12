@@ -12,7 +12,7 @@ public class PlayerController : Cs_CombatUnit
     [Tooltip("Mask of the enemies ")]
     [SerializeField]
     LayerMask EnemyMask;
-    float hitCheckRadius = 1f;
+    float hitCheckRadius = 0f;
 
     float wallCheckRadius = 0.1f;
     [Header(" ======= Left & Right Limits =========")]
@@ -77,11 +77,12 @@ public class PlayerController : Cs_CombatUnit
 
     private void Start()
     {
-        InvokeRepeating("CheckSideLimits", 0f, 0.3f);
+        //InvokeRepeating("CheckSideLimits", 0f, 0.3f);
     }
 
     private void Update()
     {
+        CheckSideLimits();
         if (GameManager.Instance.GetCurrentGameState() == GameManager.GameState.Playing) ManageAnimations();
     } 
     
