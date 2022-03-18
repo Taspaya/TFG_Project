@@ -4,20 +4,17 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     Animator myAnimator;
     Rigidbody myRb;
     float horizontal;
     bool isGrounded = true;
 
 
+
     //Gravity implementation
-    float gravity = -9.8f;
-    float groundedGravity = -0.5f;
     [Header(" ======= Gravity Settings =========")]
-    [SerializeField]
-    [Tooltip("Gravity multiplier")]
-    float gravityScale = 1;
+    const float FALL_SPEED = -7;
+
     //Jumping variables
     bool isJumping = false;
     float initialJumpVelocity;
@@ -50,62 +47,96 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     [Tooltip("Used to flip the mesh")]
     GameObject playerMesh;
-    
+    private bool jumping;
+
     private void Awake()
     {
         myAnimator = playerMesh.GetComponent<Animator>();
         myRb = GetComponent<Rigidbody>();
-        myRb.useGravity = false;
         SetupJumpVariables();
     }
 
     // Update is called once per frame
     void Update()
     {
+        isGrounded = Physics.OverlapSphere(feetPos.position, checkRadius, groundMask).Length > 0 || (myRb.velocity.y < 0.1f && myRb.velocity.y > -0.1f);
+
         FlipPlayer();
-        ManageJump();
-        ManagePlayerMovement();
         ManageAnimations();
-    }
+        ManageWallJump();
 
-    private void FixedUpdate()
-    {
-        //Just for Jump Events
-        HandleGravity();
-    }
-    void ManagePlayerMovement()
-    {
-        if (PlayerController.Instance.GetCanWalk())
-            horizontal = Input.GetAxis("Horizontal");
-        else horizontal = 0;
-
-        Vector3 position = transform.position;
-        position.x = position.x + 0.1f * horizontal * Time.deltaTime * speed * 10;
-        
-        if(((!PlayerController.Instance.GetIsLeftLimited() && horizontal < 0) || (!PlayerController.Instance.GetIsRightLimited() && horizontal > 0)) && PlayerController.Instance.GetCanWalk())
-        transform.position = position; 
-    }
-
-    void ManageJump()
-    {
-        //Jump
-        isGrounded = Physics.OverlapSphere(feetPos.position, checkRadius, groundMask).Length > 0;
+        jumping = Input.GetButton("Jump");
 
         if (!isJumping && isGrounded && Input.GetButtonDown("Jump"))
         {
             isJumping = true;
-            myRb.AddForce(Vector3.up * initialJumpVelocity * jumpForce);
+            myRb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
         }
-        else if (isJumping && isGrounded && !Input.GetButtonDown("Jump")) isJumping = false; 
-        
+        else if (isJumping && isGrounded && !Input.GetButtonDown("Jump")) isJumping = false;
 
-        if(jumpTimeCounter > 0 && Input.GetButton("Jump"))
+    }
+
+    private void FixedUpdate()
+    {
+        ManageJumpPSX();
+        ManagePlayerMovement();
+        if (!isGrounded && myRb.velocity.y <= 0 && 
+            !(myRb.velocity.y < FALL_SPEED) && 
+            !PlayerController.Instance.GetIsLeftLimited() && 
+            !PlayerController.Instance.GetIsRightLimited())
+            
+            myRb.AddForce(-transform.up * (jumpForce * 0.1f ), ForceMode.Acceleration);
+    }
+
+
+    void ManageWallJump()
+    {
+        if(PlayerController.Instance.GetIsLeftLimited() && !isGrounded && Input.GetButtonDown("Jump"))
+        {
+            Vector3 walljumpForce = new Vector3(jumpForce, -myRb.velocity.y + jumpForce * 2, 0);
+            myRb.AddForce(walljumpForce, ForceMode.Impulse);
+            FlipPlayer();
+        }
+    }
+
+    void ManagePlayerMovement()
+    {
+
+        if (PlayerController.Instance.GetCanWalk()) horizontal = Input.GetAxis("Horizontal");
+        else
+        {
+            horizontal = 0;
+            myRb.velocity = new Vector3(0, myRb.velocity.y, 0);
+        }
+
+        if (!PlayerController.Instance.GetIsLeftLimited() && !PlayerController.Instance.GetIsRightLimited())
+            myRb.velocity = myRb.velocity + new Vector3(horizontal, 0, 0);
+        else if (PlayerController.Instance.GetIsLeftLimited() && horizontal > 0)
+            myRb.velocity = myRb.velocity + new Vector3(horizontal, 0, 0);
+        else if (PlayerController.Instance.GetIsRightLimited() && horizontal < 0)
+            myRb.velocity = myRb.velocity + new Vector3(horizontal, 0, 0);
+
+    }
+
+    void ManageJumpPSX()
+    {
+        //Jump
+        if ((!isGrounded && jumpTimeCounter < 0 ) || !isJumping) myRb.AddForce(-transform.up * (jumpForce / 100), ForceMode.VelocityChange);
+
+        if (jumpTimeCounter > 0 && jumping)
         {
             jumpTimeCounter -= Time.deltaTime;
             myRb.AddForce(Vector3.up * initialJumpVelocity * jumpForce * 0.005f);
         }
 
         if ((jumpTimeCounter < 0 && isGrounded) || Input.GetButtonUp("Jump")) jumpTimeCounter = maxJumpTime;
+
+
+        if(isGrounded)
+        {
+            myRb.velocity = new Vector3( myRb.velocity.x, 0, myRb.velocity.z);
+            myRb.angularVelocity = Vector3.zero;
+        }
     }
 
     void FlipPlayer()
@@ -125,23 +156,24 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleGravity()
     {
-        if (isGrounded)
-        {
-            Vector3 gravityForce = groundedGravity * gravityScale * Vector3.up;
-            myRb.AddForce(gravityForce, ForceMode.Acceleration);
-        }
-        else
-        {
-            Vector3 gravityForce = gravity * gravityScale * Vector3.up;
-            myRb.AddForce(gravityForce, ForceMode.Acceleration);
-        }
+        //if (isGrounded)
+        //{
+        //    Vector3 gravityForce = groundedGravity * gravityScale * Vector3.up;
+        //    myRb.AddForce(gravityForce, ForceMode.Acceleration);
+        //}
+        //else
+        //{
+        //    Vector3 gravityForce = gravity * gravityScale * Vector3.up;
+        //    myRb.AddForce(gravityForce, ForceMode.Acceleration);
+        //}
+
+        if (!isGrounded) transform.position -= Vector3.up / 10;
     }
 
     void SetupJumpVariables()
     {
         jumpTimeCounter = maxJumpTime;
         float timeToApex = maxJumpTime / 2;
-        gravity = (-2 * maxJumpHeight) / Mathf.Pow(timeToApex, 2);
         initialJumpVelocity = (2 * maxJumpHeight) / timeToApex;
     }
 

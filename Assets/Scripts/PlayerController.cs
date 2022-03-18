@@ -75,11 +75,6 @@ public class PlayerController : Cs_CombatUnit
         }
     }
 
-    private void Start()
-    {
-        //InvokeRepeating("CheckSideLimits", 0f, 0.3f);
-    }
-
     private void Update()
     {
         CheckSideLimits();
@@ -126,6 +121,8 @@ public class PlayerController : Cs_CombatUnit
     {
         isLeftLimited = Physics.OverlapSphere(leftLimitPos.position, wallCheckRadius, wallMask).Length > 0;
         isRightLimited = Physics.OverlapSphere(rightLimitPos.position, wallCheckRadius, wallMask).Length > 0;
+
+
     }
     private void OnDrawGizmosSelected()
     {

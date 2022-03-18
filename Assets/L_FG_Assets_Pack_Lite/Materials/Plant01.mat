@@ -91,7 +91,7 @@ Material:
     - _TranslucencyViewDependency: 0.7
     m_Colors:
     - _BackColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 0.9429817, b: 0.5613208, a: 1}
+    - _Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
     - _EmisColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _Scale: {r: 1, g: 1, b: 1, a: 1}
