@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - AnimationEventHandler
+    - Base_Patrol
     - CS_Fog
     - CS_KillingObstacle
     - CS_Pickup
@@ -9,9 +10,9 @@ ScriptsOnlyBuild:
     - Cs_Destructible
     - Cs_footStep
     - GameManager
+    - LoadSceneObject
     - PlayerController
     - PlayerMovement
-    - SimpleDialogue
     - UI_Manager
     Cinemachine.dll:
     - Cinemachine.CinemachineBrain
@@ -42,7 +43,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Image
     - UnityEngine.UI.Text
   sceneClasses:
-    Assets/Scenes/SampleScene 1.unity:
+    Assets/Scenes/levels/Lvl 0.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -58,6 +59,8 @@ ScriptsOnlyBuild:
     - Class: 33
       Script: {instanceID: 0}
     - Class: 43
+      Script: {instanceID: 0}
+    - Class: 45
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
@@ -77,8 +80,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
-    - Class: 90
-      Script: {instanceID: 0}
     - Class: 91
       Script: {instanceID: 0}
     - Class: 95
@@ -88,64 +89,64 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 2242}
+      Script: {instanceID: 1538}
     - Class: 114
-      Script: {instanceID: 2364}
+      Script: {instanceID: 1660}
     - Class: 114
-      Script: {instanceID: 2804}
+      Script: {instanceID: 2102}
     - Class: 114
-      Script: {instanceID: 3082}
+      Script: {instanceID: 2244}
     - Class: 114
-      Script: {instanceID: 3118}
+      Script: {instanceID: 2382}
     - Class: 114
-      Script: {instanceID: 3184}
+      Script: {instanceID: 2418}
     - Class: 114
-      Script: {instanceID: 3250}
+      Script: {instanceID: 2484}
     - Class: 114
-      Script: {instanceID: 3316}
+      Script: {instanceID: 2550}
     - Class: 114
-      Script: {instanceID: 3424}
+      Script: {instanceID: 2616}
     - Class: 114
-      Script: {instanceID: 3566}
+      Script: {instanceID: 2724}
     - Class: 114
-      Script: {instanceID: 3626}
+      Script: {instanceID: 2866}
     - Class: 114
-      Script: {instanceID: 3672}
+      Script: {instanceID: 2926}
     - Class: 114
-      Script: {instanceID: 3718}
+      Script: {instanceID: 2972}
     - Class: 114
-      Script: {instanceID: 3920}
+      Script: {instanceID: 3018}
     - Class: 114
-      Script: {instanceID: 4048}
+      Script: {instanceID: 3220}
     - Class: 114
-      Script: {instanceID: 4126}
+      Script: {instanceID: 3348}
     - Class: 114
-      Script: {instanceID: 4250}
+      Script: {instanceID: 3426}
     - Class: 114
-      Script: {instanceID: 4314}
+      Script: {instanceID: 3550}
     - Class: 114
-      Script: {instanceID: 4604}
+      Script: {instanceID: 3614}
     - Class: 114
-      Script: {instanceID: 4736}
+      Script: {instanceID: 3866}
     - Class: 114
-      Script: {instanceID: 4768}
+      Script: {instanceID: 3906}
     - Class: 114
-      Script: {instanceID: 5044}
+      Script: {instanceID: 4038}
     - Class: 114
-      Script: {instanceID: 5050}
+      Script: {instanceID: 4070}
     - Class: 114
-      Script: {instanceID: 5288}
+      Script: {instanceID: 4346}
     - Class: 114
-      Script: {instanceID: 5322}
+      Script: {instanceID: 4592}
     - Class: 114
-      Script: {instanceID: 5390}
+      Script: {instanceID: 4626}
+    - Class: 114
+      Script: {instanceID: 4694}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
       Script: {instanceID: 0}
     - Class: 135
-      Script: {instanceID: 0}
-    - Class: 136
       Script: {instanceID: 0}
     - Class: 137
       Script: {instanceID: 0}
@@ -170,6 +171,47 @@ ScriptsOnlyBuild:
     - Class: 243
       Script: {instanceID: 0}
     - Class: 245
+      Script: {instanceID: 0}
+    - Class: 258
+      Script: {instanceID: 0}
+    - Class: 850595691
+      Script: {instanceID: 0}
+    Assets/Scenes/levels/Lvl 1.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 23
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 33
+      Script: {instanceID: 0}
+    - Class: 43
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
+    - Class: 89
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 108
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 2550}
+    - Class: 114
+      Script: {instanceID: 2926}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
@@ -226,7 +268,7 @@ ScriptsOnlyBuild:
     className: CinemachineExternalCamera
   - hash:
       serializedVersion: 2
-      Hash: 1caa471a46ea20515618b7d082622535
+      Hash: 47f504e336c68f3b46508cb912a1490b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerMovement
@@ -272,6 +314,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Shadow
+  - hash:
+      serializedVersion: 2
+      Hash: 81ef967cee2a8b65922eb59cd7d098b6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnemyBase
   - hash:
       serializedVersion: 2
       Hash: 300fd99066f8c288e85f5e81ce65fe34
@@ -332,6 +380,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RawImage
+  - hash:
+      serializedVersion: 2
+      Hash: 661a58e8ad48cd435aa02e6a0521d164
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LoadSceneObject
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -508,7 +562,7 @@ ScriptsOnlyBuild:
     className: Scrollbar
   - hash:
       serializedVersion: 2
-      Hash: 0e1f449c0c76d218beb9581f5cbfeb81
+      Hash: 81ef967cee2a8b65922eb59cd7d098b6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Cs_BaseEnemy
@@ -586,7 +640,7 @@ ScriptsOnlyBuild:
     className: CinemachineSmoothPath
   - hash:
       serializedVersion: 2
-      Hash: c2576ea626525147833c447a1c12e3de
+      Hash: 8445c82b30b47f8a26d8b1847f8264ea
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -622,7 +676,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: c1eceb00e8b65410eacec8bf39774a94
+      Hash: dfd3cb33d100026b30962dc9f0702e1e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Cs_Destructible
@@ -764,6 +818,12 @@ ScriptsOnlyBuild:
     assemblyName: Cinemachine.dll
     namespaceName: Cinemachine
     className: CinemachineGroupComposer
+  - hash:
+      serializedVersion: 2
+      Hash: e4b627ef71042d7ab30a7dbea945dedd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Base_Patrol
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -928,6 +988,12 @@ ScriptsOnlyBuild:
     className: CinemachineBasicMultiChannelPerlin
   - hash:
       serializedVersion: 2
+      Hash: 62773d077ec7ebb394ba03c1a31defe7
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CS_JumpManager
+  - hash:
+      serializedVersion: 2
       Hash: d1e214306c3b0d8ca9eca0d835269175
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -982,5 +1048,6 @@ ScriptsOnlyBuild:
     className: CinemachineBlendListCamera
   platform: 19
   scenePathNames:
-  - Assets/Scenes/SampleScene 1.unity
+  - Assets/Scenes/levels/Lvl 0.unity
+  - Assets/Scenes/levels/Lvl 1.unity
   playerPath: C:/Uni/VJ1241 - TFG/Builds/TestProject.exe

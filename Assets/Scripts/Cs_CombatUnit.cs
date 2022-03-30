@@ -4,32 +4,41 @@ using UnityEngine;
 
 public abstract class Cs_CombatUnit : MonoBehaviour
 {
+    public int maxLife { get; set; }
+    public int currentLife { get; set; }
+    public int strength { get; set; }
+    public Vector3 direction { get; set; }
+    public bool canMove { get; set; }
+
+
     [Header(" ======= COMBAT =========")]
-    public int maxLife = 2;
-    [System.NonSerialized]
-    public int currentLife;
     [System.NonSerialized]
     public bool isStunned;
 
     public int currentDamage = 1;
 
-    private void Start()
+    private void Awake()
     {
         currentLife = maxLife;
     }
+
     public abstract void Attack();
     public void RecieveDamage(int n) {
-        Debug.Log("I'm " + gameObject.name + "And I have: " + currentLife + " life");
+        Debug.Log(gameObject.name + ": Ouch");
         currentLife -= n;
-        Debug.Log("I'm " + gameObject.name + "And i'm recieving: " + n + " Of damage. I have " + currentLife + " now");
-
         DeathChecker();
     }
 
-
+    public void Init_BasePatrol()
+    {
+        maxLife = 1;
+        currentLife = 1;
+        strength = 1;
+        canMove = true;
+    }
     void  DeathChecker()
     {
-        if (currentLife < 0) Destroy(gameObject);
+        if (currentLife <= 0) Destroy(gameObject);
     }
     public void Heal(int n)
     {

@@ -17,4 +17,5 @@ public class GameManager : PersistentSingleton<GameManager>
 
     public GameState GetCurrentGameState() { return currentGameState; }
 
+
 }

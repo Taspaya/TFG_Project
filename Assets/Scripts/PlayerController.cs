@@ -12,6 +12,7 @@ public class PlayerController : Cs_CombatUnit
     [Tooltip("Mask of the enemies ")]
     [SerializeField]
     LayerMask EnemyMask;
+    [SerializeField]
     float hitCheckRadius = 0f;
 
     float wallCheckRadius = 0.1f;
@@ -85,7 +86,6 @@ public class PlayerController : Cs_CombatUnit
     {
         CheckForEnemies();
         CheckForDestructibles();
-
     }
 
     void CheckForEnemies()
@@ -95,11 +95,13 @@ public class PlayerController : Cs_CombatUnit
         if (enemiesArray.Length > 0)
             foreach (var item in enemiesArray)
             {
-                Cs_CombatUnit enemy = item.GetComponent<Cs_CombatUnit>();
+                Cs_CombatUnit enemy = item.GetComponentInParent<Base_Patrol>();
+                
                 if (enemy) DealDamage(enemy);
             }
+        Debug.Log(enemiesArray.Length);
     }
-    
+
     void CheckForDestructibles() {
 
         Collider[] destructiblesArray = Physics.OverlapSphere(handPos.position, hitCheckRadius, destructibleMask);
