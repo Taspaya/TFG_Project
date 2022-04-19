@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class PlayerController : Cs_CombatUnit
 {
+    [Header(" ======= Run Settings =========")]
+    [Tooltip("Player Run Speed")]
+    [SerializeField]
+    public float speed = 2;
+
     [Header(" ======= COMBAT =========")]
     [Tooltip("Position of the hand")]
     [SerializeField]
@@ -34,6 +39,12 @@ public class PlayerController : Cs_CombatUnit
     Transform rightLimitPos;
     [SerializeField]
     LayerMask destructibleMask;
+    [Header(" ======= Jump Settings =========")]
+    [Tooltip("How long the player can keep going upwards when jumping")]
+    public float jumpTime = 0.5f;
+    [SerializeField]
+    [Tooltip("Radius of the isGrouded collider checker")]
+    float checkRadius = 1;
 
     [Header(" ======= Particles =========")]
 
@@ -123,8 +134,6 @@ public class PlayerController : Cs_CombatUnit
     {
         isLeftLimited = Physics.OverlapSphere(leftLimitPos.position, wallCheckRadius, wallMask).Length > 0;
         isRightLimited = Physics.OverlapSphere(rightLimitPos.position, wallCheckRadius, wallMask).Length > 0;
-
-
     }
     private void OnDrawGizmosSelected()
     {
@@ -140,4 +149,5 @@ public class PlayerController : Cs_CombatUnit
     public bool GetIsRightLimited() { return isRightLimited; }
     public bool GetCanWalk() { return canWalk; }
     public void SetCanWalk(bool value) { canWalk = value;  }
+
 }

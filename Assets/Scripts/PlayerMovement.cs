@@ -22,17 +22,16 @@ public class PlayerMovement : MonoBehaviour
     float currentJumpTime;
     float jumpTimeCounter;
 
-    [Header(" ======= Run Settings =========")]
-    [Tooltip("Player Run Speed")]
-    [SerializeField]
+    // ======= Run Settings =========")
     float speed = 2;
     float currentSpeed;
-    [Header(" ======= Jump Settings =========")]
-    [Tooltip("Player Jump Settings")]
+
+
     [SerializeField]
     Transform feetPos;
+
+    float jumpTime;
     [SerializeField]
-    [Tooltip("Radius of the isGrouded collider checker")]
     float checkRadius = 1;
     [SerializeField]
     LayerMask groundMask;
@@ -41,11 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header(" ======= Other Settings =========")]
     [SerializeField]
-    [Tooltip("How long the player can keep going upwards when jumping")]
-    float jumpTime = 0.5f;
 
-
-    [SerializeField]
     [Tooltip("Used to flip the mesh")]
     GameObject playerMesh;
     private bool jumping;
@@ -54,6 +49,8 @@ public class PlayerMovement : MonoBehaviour
     {
         myAnimator = playerMesh.GetComponent<Animator>();
         myRb = GetComponent<Rigidbody>();
+        speed = PlayerController.Instance.speed;
+        jumpTime = PlayerController.Instance.jumpTime;
         currentSpeed = speed;
         currentJumpTime = jumpTime;
     }
@@ -109,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
             FlipPlayer();
         }
     }
-
+     
     void ManagePlayerMovement()
     {
         if (!isGrounded) currentSpeed = speed / 2;
@@ -122,15 +119,51 @@ public class PlayerMovement : MonoBehaviour
             myRb.velocity = new Vector3(0, myRb.velocity.y, 0);
         }
 
+        if (horizontal < 0.2f && horizontal > -0.2f) myRb.velocity = new Vector3(0, myRb.velocity.y, 0);
+
         if (!PlayerController.Instance.GetIsLeftLimited() && !PlayerController.Instance.GetIsRightLimited())
-            myRb.velocity = myRb.velocity + new Vector3(horizontal * currentSpeed, 0, 0);
+            MovePlayer();
         else if (PlayerController.Instance.GetIsLeftLimited() && horizontal > 0)
-            myRb.velocity = myRb.velocity + new Vector3(horizontal * currentSpeed, 0, 0);
+            MovePlayer();
         else if (PlayerController.Instance.GetIsRightLimited() && horizontal < 0)
-            myRb.velocity = myRb.velocity + new Vector3(horizontal * currentSpeed, 0, 0);
+            MovePlayer();
+        //myRb.velocity = myRb.velocity + new Vector3(horizontal * currentSpeed, 0, 0);
 
     }
 
+    void MovePlayer()
+    {
+        float factor = 10;
+        //Going Left
+        if(myRb.velocity.x < 0) 
+        {
+            //Direction change
+            if(horizontal > 0) {
+                factor = 10;
+            }
+            //Same direction
+            else if(horizontal < 0) {
+                factor = 1f;
+            }
+        }
+        //Going Right
+        else if(myRb.velocity.x > 0) 
+        {
+            //Direction change
+            if (horizontal < 0)
+            {
+                factor = 10;
+            }
+            //Same direction
+            else if (horizontal > 0)
+            {
+                factor = 1f;
+            }
+        }
+
+        myRb.AddForce(new Vector3(horizontal * currentSpeed * factor, 0, 0), ForceMode.Impulse);
+
+    }
 
     void FlipPlayer()
     {
@@ -150,12 +183,11 @@ public class PlayerMovement : MonoBehaviour
     void HandleGravity()
     {
         if (!isGrounded && (myRb.velocity.y > FALL_SPEED && myRb.velocity.y < 0)) myRb.AddForce(-Vector3.up, ForceMode.VelocityChange);
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            myRb.AddForce(new Vector3(0, myRb.velocity.y,0));
+        }
     }
 
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(feetPos.position, checkRadius);
-    }
 }
