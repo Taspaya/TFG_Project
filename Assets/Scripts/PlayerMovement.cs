@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
 
     //Jumping variables
     bool isJumping = false;
-    float initialJumpVelocity;
     float maxJumpHeight = 1;
     float currentJumpTime;
     float jumpTimeCounter;
@@ -42,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
 
     [Tooltip("Used to flip the mesh")]
-    GameObject playerMesh;
+    public GameObject playerMesh;
     private bool jumping;
 
     private void Awake()
@@ -58,24 +57,24 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isGrounded = Physics.OverlapSphere(feetPos.position, checkRadius, groundMask).Length > 0 || (myRb.velocity.y < 0.1f && myRb.velocity.y > -0.1f);
+        isGrounded = Physics.OverlapSphere(feetPos.position, checkRadius, groundMask).Length > 0;
 
         FlipPlayer();
         ManageAnimations();
-        ManageWallJump();
+        //ManageWallJump();
         jumping = Input.GetButton("Jump");
 
         if (isGrounded && Input.GetButtonDown("Jump"))
         {
             isJumping = true;
-            myRb.AddForce(transform.up * jumpForce, ForceMode.VelocityChange);
+            myRb.AddForce(transform.up * jumpForce * 0.5f, ForceMode.Impulse);
         }
         else if (isGrounded && !Input.GetButtonDown("Jump")) isJumping = false;
 
-        if(!isGrounded && Input.GetButton("Jump") && currentJumpTime > 0)
-        {
-            myRb.AddForce(transform.up * 0.5f, ForceMode.VelocityChange);
-        }
+        //if(!isGrounded && jumping && currentJumpTime > 0)
+        //{
+        //    myRb.AddForce(transform.up * 0.5f, ForceMode.VelocityChange);
+        //}
 
         if (isGrounded && currentJumpTime <= 0) currentJumpTime = jumpTime;
         HandleGravity();
@@ -83,23 +82,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isGrounded && Input.GetButton("Jump") && currentJumpTime > 0)
-        {
-            currentJumpTime -= 0.1f;
-        }
+        //////////if (!isGrounded && Input.GetButton("Jump") && currentJumpTime > 0)
+        //////////{
+        //////////    currentJumpTime -= 0.1f;
+        //////////    myRb.AddForce(transform.up * 0.5f, ForceMode.VelocityChange);
+        //////////}
 
-            ManagePlayerMovement();
-        if (!isGrounded && myRb.velocity.y <= 0 && 
-            !PlayerController.Instance.GetIsLeftLimited() && 
-            !PlayerController.Instance.GetIsRightLimited())
-            
+        ManagePlayerMovement();
+        if (!isGrounded && myRb.velocity.y <= 0 //&& 
+            //!PlayerController.Instance.GetIsLeftLimited() && 
+            //!PlayerController.Instance.GetIsRightLimited()
+            )
             myRb.AddForce(-transform.up * (jumpForce * 0.1f ), ForceMode.Acceleration);
     }
 
 
     void ManageWallJump()
     {
-        if(PlayerController.Instance.GetIsLeftLimited() && !isGrounded && Input.GetButtonDown("Jump"))
+        if(!isGrounded && Input.GetButtonDown("Jump"))
         {
             Vector3 walljumpForce = new Vector3(jumpForce, -myRb.velocity.y + jumpForce * 2, 0);
             myRb.AddForce(walljumpForce, ForceMode.Impulse);
@@ -109,8 +109,8 @@ public class PlayerMovement : MonoBehaviour
      
     void ManagePlayerMovement()
     {
-        if (!isGrounded) currentSpeed = speed / 2;
-        else currentSpeed = speed;
+        //if (!isGrounded) currentSpeed = speed / 2;
+        //else currentSpeed = speed;
 
         if (PlayerController.Instance.GetCanWalk()) horizontal = Input.GetAxis("Horizontal");
         else
@@ -121,47 +121,20 @@ public class PlayerMovement : MonoBehaviour
 
         if (horizontal < 0.2f && horizontal > -0.2f) myRb.velocity = new Vector3(0, myRb.velocity.y, 0);
 
-        if (!PlayerController.Instance.GetIsLeftLimited() && !PlayerController.Instance.GetIsRightLimited())
+        //if (!PlayerController.Instance.GetIsLeftLimited() && !PlayerController.Instance.GetIsRightLimited())
+        //    MovePlayer();
+        //else if (PlayerController.Instance.GetIsLeftLimited() && horizontal > 0)
+        //    MovePlayer();
+        //else if (PlayerController.Instance.GetIsRightLimited() && horizontal < 0)
             MovePlayer();
-        else if (PlayerController.Instance.GetIsLeftLimited() && horizontal > 0)
-            MovePlayer();
-        else if (PlayerController.Instance.GetIsRightLimited() && horizontal < 0)
-            MovePlayer();
-        //myRb.velocity = myRb.velocity + new Vector3(horizontal * currentSpeed, 0, 0);
 
     }
 
     void MovePlayer()
     {
-        float factor = 10;
-        //Going Left
-        if(myRb.velocity.x < 0) 
-        {
-            //Direction change
-            if(horizontal > 0) {
-                factor = 10;
-            }
-            //Same direction
-            else if(horizontal < 0) {
-                factor = 1f;
-            }
-        }
-        //Going Right
-        else if(myRb.velocity.x > 0) 
-        {
-            //Direction change
-            if (horizontal < 0)
-            {
-                factor = 10;
-            }
-            //Same direction
-            else if (horizontal > 0)
-            {
-                factor = 1f;
-            }
-        }
 
-        myRb.AddForce(new Vector3(horizontal * currentSpeed * factor, 0, 0), ForceMode.Impulse);
+
+        if(Mathf.Abs(myRb.velocity.x) < speed) myRb.AddForce(new Vector3(horizontal * speed, 0, 0), ForceMode.VelocityChange);
 
     }
 
@@ -186,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonUp("Jump"))
         {
-            myRb.AddForce(new Vector3(0, myRb.velocity.y,0));
+            myRb.AddForce(new Vector3(0, -myRb.velocity.y * 0.5f, 0), ForceMode.Impulse);
         }
     }
 

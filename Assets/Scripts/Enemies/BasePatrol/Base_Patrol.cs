@@ -29,11 +29,20 @@ public class Base_Patrol : Cs_CombatUnit
     Point GoingTowards;
 
     [SerializeField]
+    public int actualLife ;
+    [SerializeField]
+    public int actualDamage;
+    [SerializeField]
+    bool isStopped = false;
+    [SerializeField]
     int speed = 1;
 
     private void Awake()
     {
         Init_BasePatrol();
+        maxLife = actualLife;
+        currentLife = actualLife;
+        currentDamage = actualDamage;
     }
 
     private void Start()
@@ -44,18 +53,22 @@ public class Base_Patrol : Cs_CombatUnit
     }
     void Update()
     {
-        if(canMove) Patrol();
+        if(!isStopped) Patrol();
     }
-
 
     void Patrol()
     {
+        
         if(Vector3.Distance(EnemyObject.transform.position , GoingTowards.position) < Point_A.radius)
             GoingTowards = GoingTowards == Point_A ? Point_B : Point_A;
 
         direction = GoingTowards.point.transform.position - EnemyObject.transform.position;
         EnemyObject.transform.position += direction.normalized * speed * 0.01f;
 
+
+        if (GoingTowards != Point_A) EnemyObject.transform.rotation = Quaternion.Euler(-90,180,0);
+        else EnemyObject.transform.rotation = Quaternion.Euler(-90,0,0);
+                // = new Vector3(EnemyObject.transform.localScale.x * -1, EnemyObject.transform.localScale.y, EnemyObject.transform.localScale.z);
     }
 
     private void OnDrawGizmos()
@@ -69,5 +82,15 @@ public class Base_Patrol : Cs_CombatUnit
     public override void Attack()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void SetIsStopped(bool val)
+    {
+        isStopped = val;
+    }
+
+    public override void RecieveDamage(int n)
+    {
+        base.RecieveDamage(n);
     }
 }

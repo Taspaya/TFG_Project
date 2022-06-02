@@ -23,30 +23,47 @@ public abstract class Cs_CombatUnit : MonoBehaviour
     }
 
     public abstract void Attack();
-    public void RecieveDamage(int n) {
-        Debug.Log(gameObject.name + ": Ouch");
+    public virtual void RecieveDamage(int n) {
         currentLife -= n;
         DeathChecker();
     }
-
+     
     public void Init_BasePatrol()
     {
         maxLife = 1;
         currentLife = 1;
         strength = 1;
         canMove = true;
-    }
-    void  DeathChecker()
+    } 
+    void DeathChecker()
     {
-        if (currentLife <= 0) Destroy(gameObject);
+        Debug.Log(currentLife);
+        if (currentLife <= 0)
+        {
+            
+            GetComponentInChildren<Animator>().SetTrigger("Die");
+            GetComponentInChildren<Collider>().enabled = false;
+            this.enabled = false;
+        }
+        else GetComponentInChildren<Animator>().SetTrigger("Hit");
     }
     public void Heal(int n)
     {
         currentLife += n;
     }
 
-    public void DealDamage(Cs_CombatUnit other)
+    public virtual void DealDamage(Cs_CombatUnit other)
     {
+        
         other.RecieveDamage(currentDamage);
+    }
+
+    public void SetCanMove(bool value) {
+        canMove = value;
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }

@@ -30,7 +30,6 @@ public class SimpleDialogue : InteractableBase
         else
         {
             GameManager.Instance.ChangeGameState(GameManager.GameState.Playing);
-            GameManager.Instance.UI_Manager.HideUIDialogue();
             PlayerController.Instance.SetCanWalk(true);
         }
     }
@@ -39,7 +38,6 @@ public class SimpleDialogue : InteractableBase
     {
         GameManager.Instance.ChangeGameState(GameManager.GameState.Dialogue);
         PlayerController.Instance.SetCanWalk(canPlayerWalk);
-        GameManager.Instance.UI_Manager.ShowUIDialogue();
         GameManager.Instance.UI_Manager.currentSimpleDialogue = this;
         GameManager.Instance.UI_Manager.WriteDialogue(dialogues[currentDialogue]);
     }

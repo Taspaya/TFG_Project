@@ -11,6 +11,8 @@ public class PlayerController : Cs_CombatUnit
     public float speed = 2;
 
     [Header(" ======= COMBAT =========")]
+    [SerializeField]
+    int actualLife = 4;
     [Tooltip("Position of the hand")]
     [SerializeField]
     Transform handPos;
@@ -20,10 +22,12 @@ public class PlayerController : Cs_CombatUnit
     [SerializeField]
     float hitCheckRadius = 0f;
 
+    [SerializeField]
+    GameObject BigSword;
     float wallCheckRadius = 0.1f;
-    [Header(" ======= Left & Right Limits =========")]
-    bool isLeftLimited = false;
-    bool isRightLimited = false;
+    //[Header(" ======= Left & Right Limits =========")]
+    //bool isLeftLimited = false;
+    //bool isRightLimited = false;
 
     bool canWalk = true;
 
@@ -31,12 +35,12 @@ public class PlayerController : Cs_CombatUnit
     [Tooltip("Mask for the ground and walls")]
     LayerMask wallMask;
 
-    [SerializeField]
-    [Tooltip("Position of the left limit")]
-    Transform leftLimitPos;
-    [SerializeField]
-    [Tooltip("Position of the right limit")]
-    Transform rightLimitPos;
+    //[SerializeField]
+    //[Tooltip("Position of the left limit")]
+    //Transform leftLimitPos;
+    //[SerializeField]
+    //[Tooltip("Position of the right limit")]
+    //Transform rightLimitPos;
     [SerializeField]
     LayerMask destructibleMask;
     [Header(" ======= Jump Settings =========")]
@@ -87,9 +91,15 @@ public class PlayerController : Cs_CombatUnit
         }
     }
 
+    private void Start()
+    {
+        currentLife = actualLife;
+        maxLife = actualLife;
+    }
+     
     private void Update()
     {
-        CheckSideLimits();
+        //CheckSideLimits();
         if (GameManager.Instance.GetCurrentGameState() == GameManager.GameState.Playing) ManageAnimations();
     } 
     
@@ -99,6 +109,13 @@ public class PlayerController : Cs_CombatUnit
         CheckForDestructibles();
     }
 
+    public void ShowBigSword()
+    {
+        BigSword.SetActive(true);
+        GetComponentInChildren<Animator>().SetBool("HasSword", true);
+        handPos = BigSword.transform;
+        currentDamage = 3;
+    }
     void CheckForEnemies()
     {
         Collider[] enemiesArray = Physics.OverlapSphere(handPos.position, hitCheckRadius, EnemyMask);
@@ -110,7 +127,6 @@ public class PlayerController : Cs_CombatUnit
                 
                 if (enemy) DealDamage(enemy);
             }
-        Debug.Log(enemiesArray.Length);
     }
 
     void CheckForDestructibles() {
@@ -130,24 +146,38 @@ public class PlayerController : Cs_CombatUnit
         if (Input.GetButtonDown("Attack")) GetComponentInChildren<Animator>().SetTrigger("Attack");
     }
 
-    void CheckSideLimits()
-    {
-        isLeftLimited = Physics.OverlapSphere(leftLimitPos.position, wallCheckRadius, wallMask).Length > 0;
-        isRightLimited = Physics.OverlapSphere(rightLimitPos.position, wallCheckRadius, wallMask).Length > 0;
-    }
+    //void CheckSideLimits()
+    //{
+    //    isLeftLimited = Physics.OverlapSphere(leftLimitPos.position, wallCheckRadius, wallMask).Length > 0;
+    //    isRightLimited = Physics.OverlapSphere(rightLimitPos.position, wallCheckRadius, wallMask).Length > 0;
+    //}
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(handPos.position, hitCheckRadius);
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(rightLimitPos.position, wallCheckRadius);
-        Gizmos.DrawWireSphere(leftLimitPos.position, wallCheckRadius);
+        //Gizmos.DrawWireSphere(rightLimitPos.position, wallCheckRadius);
+        //Gizmos.DrawWireSphere(leftLimitPos.position, wallCheckRadius);
     }
 
 
-    public bool GetIsLeftLimited() { return isLeftLimited; }
-    public bool GetIsRightLimited() { return isRightLimited; }
+    //public bool GetIsLeftLimited() { return isLeftLimited; }
+    //public bool GetIsRightLimited() { return isRightLimited; }
     public bool GetCanWalk() { return canWalk; }
     public void SetCanWalk(bool value) { canWalk = value;  }
+
+    public override void DealDamage(Cs_CombatUnit other)
+    {
+        base.DealDamage(other);
+    }
+
+    public override void RecieveDamage(int n)
+    {
+        base.RecieveDamage(n); 
+        for(int i = currentLife; i < maxLife; i++)
+        GameManager.Instance.UI_Manager.HitHeart(i);
+
+        PlayerController.Instance.GetComponentInChildren<Animator>().SetTrigger("Hit");
+    }
 
 }

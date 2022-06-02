@@ -16,11 +16,6 @@ public class CS_JumpManager : MonoBehaviour
     private bool isGrounded;
     private float horizontal;
 
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -37,10 +32,6 @@ public class CS_JumpManager : MonoBehaviour
         if (!isGrounded && !Input.GetKey(KeyCode.Space)) transform.GetComponent<Rigidbody>().AddForce(-transform.up * (jumpForce / 100), ForceMode.VelocityChange);
 
         horizontal = Input.GetAxis("Horizontal");
-
-
-
-
     }
 
     private void FixedUpdate()

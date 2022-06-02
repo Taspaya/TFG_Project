@@ -8,7 +8,12 @@ public class AnimationEventHandler : MonoBehaviour
 
     public void AnimationEventAttack()
     {
-        //Called int he end of the "Push" animation of the Player
+        //Called in the end of the "Push" animation of the Player
         PlayerController.Instance.Attack();
+    }
+
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
     }
 }
