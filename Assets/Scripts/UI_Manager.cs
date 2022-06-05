@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine;
 
 public class UI_Manager : MonoBehaviour
@@ -8,10 +9,13 @@ public class UI_Manager : MonoBehaviour
     [SerializeField]
     GameObject dialogueCanvas;
     [SerializeField]
-    GameObject objectiveCanvas;
+    TextMeshProUGUI dialogueText;
+    [SerializeField]
+    GameObject ThanksCanvas;
     [SerializeField]
     Text currentDialogueText;
-     
+
+    [SerializeField] GameObject DieCanvas;
     [System.NonSerialized]
     public SimpleDialogue currentSimpleDialogue;
 
@@ -30,11 +34,15 @@ public class UI_Manager : MonoBehaviour
     {
         currentDialogueText.text = text;
     }
-    public void TriggerDialogue(string value)
+    public void TriggerDialogueIn(string value)
     {
-        dialogueCanvas.GetComponentInChildren<Animator>().SetTrigger(value);
+        dialogueCanvas.GetComponentInChildren<Animator>().SetTrigger("In");
+        dialogueText.text = value;
     }
-
+    public void TriggerDialogueOut()
+    {
+        dialogueCanvas.GetComponentInChildren<Animator>().SetTrigger("Out");
+    }
     public void ManageLife()
     {
         int rdm = (int)Random.Range(-1000.0f, 100.0f);
@@ -49,6 +57,7 @@ public class UI_Manager : MonoBehaviour
             if (Input.GetButtonDown("Attack")) currentSimpleDialogue.NextDialogue();
 
         ManageLife();
+        //FillLife();
     }
 
     public void HitHeart(int v)
@@ -58,5 +67,29 @@ public class UI_Manager : MonoBehaviour
 
     public void FillHeart(int v) {
         PlayerLife[v].GetComponent<Animator>().SetTrigger("Heal");
-    } 
+        PlayerLife[v].GetComponent<Animator>().ResetTrigger("Hit");
+    }
+    
+    public void FillLife()
+    {
+       for(int i = 0; i <= PlayerController.Instance.currentLife-1; i++)
+        {
+            FillHeart(i);
+        }
+    }
+
+    public void EnableDieCanvas()
+    {
+        DieCanvas.SetActive(true);
+    }
+
+    public void DisableDieCanvas()
+    {
+        DieCanvas.SetActive(false);
+    }
+
+    public void EnableThanksCanvas()
+    {
+        ThanksCanvas.SetActive(true);
+    }
 }

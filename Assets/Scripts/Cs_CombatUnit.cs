@@ -42,7 +42,8 @@ public abstract class Cs_CombatUnit : MonoBehaviour
         {
             
             GetComponentInChildren<Animator>().SetTrigger("Die");
-            GetComponentInChildren<Collider>().enabled = false;
+            if(gameObject.tag != "Player") GetComponentInChildren<Collider>().enabled = false;
+            if (gameObject.tag == "Player") GameManager.Instance.UI_Manager.EnableDieCanvas();
             this.enabled = false;
         }
         else GetComponentInChildren<Animator>().SetTrigger("Hit");

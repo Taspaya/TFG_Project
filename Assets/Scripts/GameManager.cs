@@ -12,10 +12,10 @@ public class GameManager : PersistentSingleton<GameManager>
 {
 
 
-    [SerializeField]
-    public UI_Manager UI_Manager;
+    [SerializeField] public UI_Manager UI_Manager;
 
-     
+    [SerializeField] public SaveManager SaveManager;
+
     [SerializeField]
     public MyTimeline[] timelines;
     public enum GameState { Playing, Dialogue, Menu}
@@ -27,6 +27,10 @@ public class GameManager : PersistentSingleton<GameManager>
         SceneManager.LoadScene("Lvl 0",LoadSceneMode.Additive);
     }
 
+    private void Update()
+    {
+    }
+
     public void ChangeGameState(GameState newState)
     {
         currentGameState = newState;
@@ -34,5 +38,8 @@ public class GameManager : PersistentSingleton<GameManager>
 
     public GameState GetCurrentGameState() { return currentGameState; }
 
-
+    public void LoadCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
 }

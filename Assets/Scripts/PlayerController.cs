@@ -175,7 +175,7 @@ public class PlayerController : Cs_CombatUnit
     {
         base.RecieveDamage(n); 
         for(int i = currentLife; i < maxLife; i++)
-        GameManager.Instance.UI_Manager.HitHeart(i);
+         if(currentLife > 0) GameManager.Instance.UI_Manager.HitHeart(i);
 
         PlayerController.Instance.GetComponentInChildren<Animator>().SetTrigger("Hit");
     }
